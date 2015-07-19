@@ -1,0 +1,462 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CCFA2291-96CD-4916-8C31-E58DB31AC506}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GateAccess</RootNamespace>
+    <AssemblyName>GateAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Elmah">
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah.Mvc">
+      <HintPath>..\packages\Elmah.MVC.2.1.1\lib\net40\Elmah.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Models\DAL\EditHomeOwnersModel.cs" />
+    <Compile Include="Models\MVVM\EditAdministratorModel.cs" />
+    <Compile Include="Models\DAL\NewAdministratorsModel.cs" />
+    <Compile Include="Models\Helper\AjaxOnlyAttribute.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ControllerBase\BaseController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HomeOwnerController.cs" />
+    <Compile Include="Controllers\SecurityManagerController.cs" />
+    <Compile Include="Controllers\SecurityPersonController.cs" />
+    <Compile Include="Controllers\ServiceProviderController.cs" />
+    <Compile Include="Controllers\SuperAdministratorController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountModel.cs" />
+    <Compile Include="Models\AdministratorsModel.cs" />
+    <Compile Include="Models\Authentication\GateAccessMemberShipProvider.cs" />
+    <Compile Include="Models\Authentication\GateAccessRoleProvider.cs" />
+    <Compile Include="Models\CommunitiesModel.cs" />
+    <Compile Include="Models\CommunityUsersByRole.cs" />
+    <Compile Include="Models\DAL\AccountDAL.cs" />
+    <Compile Include="Models\DAL\AdministratorsDAL.cs" />
+    <Compile Include="Models\DAL\CommunitiesDAL.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\DAL\CommunityMenuOptionsDAL.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\DAL\HintQuestionsDAL.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\DAL\HomeOwnersDAL.cs" />
+    <Compile Include="Models\DAL\LostFoundsDAL.cs" />
+    <Compile Include="Models\DAL\MaintenancesDAL.cs" />
+    <Compile Include="Models\DAL\MenuOptionsDAL.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\DAL\NoticesDAL.cs" />
+    <Compile Include="Models\DAL\RoleDAL.cs" />
+    <Compile Include="Models\DAL\SecurityManagersDAL.cs" />
+    <Compile Include="Models\DAL\SecurityPersonnelsDAL.cs" />
+    <Compile Include="Models\DAL\ServiceProvidersDAL.cs" />
+    <Compile Include="Models\DAL\VisitorsDAL.cs" />
+    <Compile Include="Models\Helper\ConfigSettings.cs" />
+    <Compile Include="Models\Helper\CookieHelper.cs" />
+    <Compile Include="Models\Helper\AnanymousOnlyAttribute.cs" />
+    <Compile Include="Models\Helper\CustomHtmlHelpers.cs" />
+    <Compile Include="Models\Helper\Dal.cs" />
+    <Compile Include="Models\Helper\DynamicMenuBuilder.cs" />
+    <Compile Include="Models\Helper\EncryptDecrypt.cs" />
+    <Compile Include="Models\Helper\Utilities.cs" />
+    <Compile Include="Models\HintQuestionsModel.cs" />
+    <Compile Include="Models\HomeOwnersModel.cs" />
+    <Compile Include="Models\LostFoundsModel.cs" />
+    <Compile Include="Models\MaintenancesModel.cs" />
+    <Compile Include="Models\MenuOptions.cs" />
+    <Compile Include="Models\MVVM\EditHomeOwnerModel.cs" />
+    <Compile Include="Models\MVVM\EditSecurityManagerModel.cs" />
+    <Compile Include="Models\MVVM\EditSecurityPersonnelModel.cs" />
+    <Compile Include="Models\MVVM\EditServiceProviderModel.cs" />
+    <Compile Include="Models\NoticesModel.cs" />
+    <Compile Include="Models\OpinionsModel.cs" />
+    <Compile Include="Models\OpinionVotesModel.cs" />
+    <Compile Include="Models\SecurityManagersModel.cs" />
+    <Compile Include="Models\SecurityPersonnelsModel.cs" />
+    <Compile Include="Models\ServiceProvidersModel.cs" />
+    <Compile Include="Models\UsersModel.cs" />
+    <Compile Include="Models\VisitorsModel.cs" />
+    <Compile Include="Models\VisitorTypes.cs" />
+    <Compile Include="Models\WaterMark.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\MenuOptions.xml" />
+    <Content Include="Content\Administrator.css" />
+    <Content Include="Content\HomeOwner.css" />
+    <Content Include="Content\SecurityManager.css" />
+    <Content Include="Content\SecurityPerson.css" />
+    <Content Include="Content\ServiceProvider.css" />
+    <Content Include="Content\Shared\DateTimePicker\jquery-ui-timepicker-addon.css" />
+    <Content Include="Content\Shared\DateTimePicker\jquery-ui.css" />
+    <Content Include="Content\Shared\MenuBar.css" />
+    <Content Include="Content\SuperAdministrator.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\ajax-loader-small.gif" />
+    <Content Include="Images\ajax-loader.gif" />
+    <Content Include="Images\ajax-processing.gif" />
+    <Content Include="Images\ajax-redirect.gif" />
+    <Content Include="Images\ajax-searching.gif" />
+    <Content Include="Images\ajax-updating.gif" />
+    <Content Include="Images\close.png" />
+    <Content Include="Images\cross.png" />
+    <Content Include="Images\delete.png" />
+    <Content Include="Images\deleteclick.png" />
+    <Content Include="Images\DOC.png" />
+    <Content Include="Images\edit.png" />
+    <Content Include="Images\editclick.png" />
+    <Content Include="Images\email.png" />
+    <Content Include="Images\newlostfound.png" />
+    <Content Include="Images\newlostfoundclick.png" />
+    <Content Include="Images\newmaintenance.png" />
+    <Content Include="Images\newmaintenanceclick.png" />
+    <Content Include="Images\newnotice.png" />
+    <Content Include="Images\newnoticeclick.png" />
+    <Content Include="Images\newvisitor.png" />
+    <Content Include="Images\newvisitorclick.png" />
+    <Content Include="Images\PDF.png" />
+    <Content Include="Images\print.png" />
+    <Content Include="Images\refresh.png" />
+    <Content Include="Images\refreshclick.png" />
+    <Content Include="Images\rightangle.png" />
+    <Content Include="Images\rightangledown.png" />
+    <Content Include="Images\tick.png" />
+    <Content Include="Images\XLS.png" />
+    <Content Include="Images\_delete.png" />
+    <Content Include="Images\_deletedisable.png" />
+    <Content Include="RestrictrdAccess.html" />
+    <Content Include="Scripts\DateTimePicker\jquery-1.js" />
+    <Content Include="Scripts\DateTimePicker\jquery-ui-sliderAccess.js" />
+    <Content Include="Scripts\DateTimePicker\jquery-ui-timepicker-addon.js" />
+    <Content Include="Scripts\DateTimePicker\jquery-ui-timepicker.js" />
+    <Content Include="Scripts\DateTimePicker\jquery-ui.js" />
+    <Content Include="Scripts\jquery-1.8.2-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.8.3-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.8.3.js" />
+    <Content Include="Scripts\jquery-1.8.3.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.24.js" />
+    <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
+    <Content Include="Scripts\jquery.confirm\body_bg.jpg" />
+    <Content Include="Scripts\jquery.confirm\buttons.png" />
+    <Content Include="Scripts\jquery.confirm\header_bg.jpg" />
+    <Content Include="Scripts\jquery.confirm\ie.png" />
+    <Content Include="Scripts\jquery.confirm\jquery.confirm.css" />
+    <Content Include="Scripts\jquery.confirm\jquery.confirm.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Scripts\modernizr-1.7.js" />
+    <Content Include="Scripts\modernizr-1.7.min.js" />
+    <Content Include="Scripts\Shared\jquery.watermarkinput.js" />
+    <Content Include="Scripts\uiDialog\jquery-ui-1.8.custom.min.js" />
+    <Content Include="Scripts\uiDialog\jquery.effects.core.js" />
+    <Content Include="Scripts\uiDialog\jquery.effects.fade.js" />
+    <Content Include="Scripts\uiDialog\ModelPopup.js" />
+    <Content Include="Views\Account\LogOn.aspx" />
+    <Content Include="Views\Account\Recovery.aspx" />
+    <Content Include="Views\Account\_LogOn.ascx" />
+    <Content Include="Views\Account\_Recovery.ascx" />
+    <Content Include="Views\Administrator\Default.aspx" />
+    <Content Include="Views\Administrator\LostFounds.aspx" />
+    <Content Include="Views\Administrator\Notices.aspx" />
+    <Content Include="Views\Administrator\Partials\AdminMenu.ascx" />
+    <Content Include="AjaxRequestOnly.html" />
+    <Content Include="Views\Administrator\Partials\LostFounds\LostFoundDetails.ascx" />
+    <Content Include="Views\Administrator\Partials\LostFounds\LostFoundsList.ascx" />
+    <Content Include="Views\Administrator\Partials\LostFounds\LostFoundsListTable.ascx" />
+    <Content Include="Views\Administrator\Partials\LostFounds\NewLostFound.ascx" />
+    <Content Include="Views\Administrator\Maintenances.aspx" />
+    <Content Include="Views\Administrator\Partials\Maintenances\EditMaintenance.ascx" />
+    <Content Include="Views\Administrator\Partials\Maintenances\MaintenanceDetails.ascx" />
+    <Content Include="Views\Administrator\Partials\Maintenances\MaintenancesList.ascx" />
+    <Content Include="Views\Administrator\Partials\Maintenances\MaintenancesListTable.ascx" />
+    <Content Include="Views\Administrator\Partials\Maintenances\NewMaintenance.ascx" />
+    <Content Include="Views\Administrator\Partials\Notices\EditNotice.ascx" />
+    <Content Include="Views\Administrator\Partials\Notices\NewNotice.ascx" />
+    <Content Include="Views\Administrator\Partials\Notices\NoticeDetails.ascx" />
+    <Content Include="Views\Administrator\Partials\Notices\NoticesList.ascx" />
+    <Content Include="Views\Administrator\Partials\Notices\NoticesListTable.ascx" />
+    <Content Include="Views\Administrator\Partials\Users\RolesList.ascx" />
+    <Content Include="Views\Administrator\Partials\Users\Administrators\AdministratorDetails.ascx" />
+    <Content Include="Views\Administrator\Partials\Users\Administrators\AdministratorsList.ascx" />
+    <Content Include="Views\Administrator\Partials\Users\Administrators\AdministratorsListTable.ascx" />
+    <Content Include="Views\Administrator\Partials\Users\Administrators\EditAdministrator.ascx" />
+    <Content Include="Views\Administrator\Partials\Users\Administrators\NewAdministrator.ascx" />
+    <Content Include="Views\Administrator\Partials\Users\Administrators\_Administrators.ascx" />
+    <Content Include="Views\Administrator\Partials\Users\HomeOwners\EditHomeOwner.ascx" />
+    <Content Include="Views\Administrator\Partials\Users\HomeOwners\HomeOwnerDetails.ascx" />
+    <Content Include="Views\Administrator\Partials\Users\HomeOwners\HomeOwnersList.ascx" />
+    <Content Include="Views\Administrator\Partials\Users\HomeOwners\HomeOwnersListTable.ascx" />
+    <Content Include="Views\Administrator\Partials\Users\HomeOwners\NewHomeOwner.ascx" />
+    <Content Include="Views\Administrator\Partials\Users\HomeOwners\_HomeOwners.ascx" />
+    <Content Include="Views\Administrator\Partials\Users\SecurityManagers\EditSecurityManager.ascx" />
+    <Content Include="Views\Administrator\Partials\Users\SecurityManagers\NewSecurityManager.ascx" />
+    <Content Include="Views\Administrator\Partials\Users\SecurityManagers\SecurityManagerDetails.ascx" />
+    <Content Include="Views\Administrator\Partials\Users\SecurityManagers\SecurityManagersList.ascx" />
+    <Content Include="Views\Administrator\Partials\Users\SecurityManagers\SecurityManagersListTable.ascx" />
+    <Content Include="Views\Administrator\Partials\Users\SecurityManagers\_SecurityManagers.ascx" />
+    <Content Include="Views\Administrator\Partials\Users\SecurityPersons\EditSecurityPerson.ascx" />
+    <Content Include="Views\Administrator\Partials\Users\SecurityPersons\NewSecurityPerson.ascx" />
+    <Content Include="Views\Administrator\Partials\Users\SecurityPersons\SecurityPersonDetails.ascx" />
+    <Content Include="Views\Administrator\Partials\Users\SecurityPersons\SecurityPersonsList.ascx" />
+    <Content Include="Views\Administrator\Partials\Users\SecurityPersons\SecurityPersonsListTable.ascx" />
+    <Content Include="Views\Administrator\Partials\Users\SecurityPersons\_SecurityPersons.ascx" />
+    <Content Include="Views\Administrator\Partials\Users\ServiceProviders\EditServiceProvider.ascx" />
+    <Content Include="Views\Administrator\Partials\Users\ServiceProviders\NewServiceProvider.ascx" />
+    <Content Include="Views\Administrator\Partials\Users\ServiceProviders\ServiceProviderDetails.ascx" />
+    <Content Include="Views\Administrator\Partials\Users\ServiceProviders\ServiceProvidersList.ascx" />
+    <Content Include="Views\Administrator\Partials\Users\ServiceProviders\ServiceProvidersListTable.ascx" />
+    <Content Include="Views\Administrator\Partials\Users\ServiceProviders\_ServiceProviders.ascx" />
+    <Content Include="Views\Administrator\Partials\Visitors\NewVisitor.ascx" />
+    <Content Include="Views\Administrator\Partials\Visitors\VisitorDetails.ascx" />
+    <Content Include="Views\Administrator\Partials\Visitors\VisitorsList.ascx" />
+    <Content Include="Views\Administrator\Partials\Visitors\VisitorsListTable.ascx" />
+    <Content Include="Views\Administrator\Users.aspx" />
+    <Content Include="Views\Administrator\VIsitors.aspx" />
+    <Content Include="Views\Error\Default.aspx" />
+    <Content Include="Views\HomeOwner\Partials\HomeOwnerMenu.ascx" />
+    <Content Include="Views\Home\_About.ascx" />
+    <Content Include="Views\Home\About.aspx" />
+    <Content Include="Views\Home\Default.aspx" />
+    <Content Include="Views\SecurityManager\Partials\SecurityManagerMenu.ascx" />
+    <Content Include="Views\SecurityPerson\Default.aspx" />
+    <Content Include="Views\SecurityManager\Default.aspx" />
+    <Content Include="Views\HomeOwner\Default.aspx" />
+    <Content Include="Views\SecurityPerson\Partials\SecurityPersonMenu.ascx" />
+    <Content Include="Views\ServiceProvider\Default.aspx" />
+    <Content Include="Views\ServiceProvider\Partials\ServiceProviderMenu.ascx" />
+    <Content Include="Views\Shared\Date.ascx" />
+    <Content Include="Views\Shared\SiteMenu.ascx" />
+    <Content Include="Views\SuperAdministrator\Default.aspx" />
+    <Content Include="Views\SuperAdministrator\Partials\Communities\_Communities.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Communities\CommunitiesList.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Communities\CommunitiesListTable.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Communities\EditCommunity.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Communities\NewCommunity.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\LostFounds\LostFoundDetails.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Maintenances\EditMaintenance.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Maintenances\NewMaintenance.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Maintenances\MaintenanceDetails.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Maintenances\MaintenancesList.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Maintenances\MaintenancesListTable.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Maintenances\_Maintenances.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\LostFounds\NewLostFound.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\LostFounds\_LostFounds.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\LostFounds\LostFoundsList.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\LostFounds\LostFoundsListTable.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Notices\EditNotice.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Notices\NoticeDetails.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Notices\NewNotice.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Notices\NoticesList.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Notices\NoticesListTable.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Notices\_Notices.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Opinions\OpinionsList.aspx" />
+    <Content Include="Views\SuperAdministrator\Partials\Opinions\_Opinions.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Users\RolesList.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\SuperAdminMenu.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Users\Administrators\_Administrators.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Users\HomeOwners\EditHomeOwner.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Users\HomeOwners\_HomeOwners.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Users\SecurityManagers\_SecurityManagers.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Users\SecurityPersonnels\_SecurityPersonnels.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Users\ServiceProviders\_ServiceProviders.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Users\_Users.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Users\Administrators\NewAdministrator.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Users\HomeOwners\NewHomeOwner.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Users\SecurityManagers\NewSecurityManager.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Users\SecurityPersonnels\NewSecurityPersonnel.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Users\ServiceProviders\NewServiceProvider.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Users\Administrators\AdministratorDetails.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Users\Administrators\AdministratorsListTable.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Users\Administrators\AdministratorsList.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Users\Administrators\EditAdministrator.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Users\HomeOwners\HomeOwnerDetails.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Users\HomeOwners\HomeOwnersListTable.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Users\HomeOwners\HomeOwnersList.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Users\SecurityManagers\EditSecurityManager.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Users\SecurityManagers\SecurityManagerDetails.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Users\SecurityManagers\SecurityManagersListTable.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Users\SecurityManagers\SecurityManagersList.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Users\SecurityPersonnels\EditSecurityPersonnel.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Users\SecurityPersonnels\SecurityPersonnelDetails.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Users\SecurityPersonnels\SecurityPersonnelsListTable.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Users\SecurityPersonnels\SecurityPersonnelsList.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Users\ServiceProviders\EditServiceProvider.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Users\ServiceProviders\ServiceProviderDetails.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Users\ServiceProviders\ServiceProvidersListTable.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Users\ServiceProviders\ServiceProvidersList.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Visitors\VisitorDetails.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Visitors\NewVisitor.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Visitors\VisitorsList.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Visitors\VisitorsListTable.ascx" />
+    <Content Include="Views\SuperAdministrator\Partials\Visitors\_Visitors.ascx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Content\Site.css" />
+    <Content Include="Views\Account\ChangePassword.aspx" />
+    <Content Include="Views\Account\ChangePasswordSuccess.aspx" />
+    <Content Include="Views\Account\Register.aspx" />
+    <Content Include="Views\Shared\Error.aspx" />
+    <Content Include="Views\Shared\LogOnUserControl.ascx" />
+    <Content Include="Views\Shared\Site.Master" />
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SuperAdministrator\SuperAdministrator.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Administrator\Administrator.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ServiceProvider\ServiceProvider.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\HomeOwner\HomeOwner.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SecurityPerson\SecurityPerson.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\SecurityManager\SecurityManager.Master" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>1355</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

@@ -1,0 +1,82 @@
+<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<!DOCTYPE html>
+<html>
+<head id="Head1" runat="server">
+    <title>
+        <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
+    </title>
+    <script src="<%: Url.Content("~/Scripts/jquery-1.8.3.min.js")%>" type="text/javascript"></script>
+    <script src="<%: Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")%>" type="text/javascript"></script>
+    <link href="<%: Url.Content("~/Content/Administrator.css")%>" rel="stylesheet" type="text/css" />
+    <script src="<%: Url.Content("~/Scripts/jquery-ui-1.8.24.min.js")%>" type="text/javascript"></script>
+    <link href="<%: Url.Content("~/Content/themes/base/jquery.ui.all.css")%>" rel="stylesheet"
+        type="text/css" />
+    <script type="text/javascript">
+
+        function deleteclick(control) {
+            control.src = '<%: Url.Content("~/Images/deleteclick.png")%>';
+        }
+
+        function unclickdelete(control) {
+            control.src = '<%: Url.Content("~/Images/delete.png")%>';
+        }
+
+        function editclick(control) {
+            control.src = '<%: Url.Content("~/Images/editclick.png")%>';
+        }
+
+        function unclickedit(control) {
+            control.src = '<%: Url.Content("~/Images/edit.png")%>';
+        }
+
+
+
+        function Clear(ele) {
+            $(ele).find(':input').each(function () {
+                switch (this.type) {
+                    case 'password':
+                    case 'select-multiple':
+                    case 'select-one':
+                    case 'text':
+                    case 'textarea':
+                        $(this).val('');
+                        break;
+                    case 'checkbox':
+                    case 'radio':
+                        if (this.name != "RoleID")
+                            this.checked = false;
+                }
+            });
+            OnLoad();
+        }      
+        
+    </script>
+</head>
+<body onload="OnLoad()">
+    <div class="page">
+        <div id="header">
+            <div id="title">
+                <h1>
+                    <% Response.Write(ViewBag.myCommunityName);%>
+                    - Administrator</h1>
+            </div>
+            <br />
+            <div id="logindisplay">
+                <% Html.RenderPartial("LogOnUserControl"); %>
+            </div>
+            <div id="menubar">
+                <% Html.RenderPartial("Partials/AdminMenu"); %>
+            </div>
+        </div>
+        <div id="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div id="footer">
+            <hr />
+            &copy; Copyright. 2013
+        </div>
+    </div>
+</body>
+</html>

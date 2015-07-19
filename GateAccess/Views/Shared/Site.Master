@@ -1,0 +1,158 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>
+        <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
+    </title>
+    <link href="<%: Url.Content("~/Content/Site.css")%>" rel="stylesheet" type="text/css" />
+    <script src="<%: Url.Content("~/Scripts/jquery-1.8.3.min.js") %>" type="text/javascript"></script>
+    <script src="<%: Url.Content("~/Scripts/modernizr-1.7.min.js") %>" type="text/javascript"></script>
+    <script src="<%: Url.Content("~/Scripts/MicrosoftAjax.js") %>" type="text/javascript"></script>
+    <script src="<%: Url.Content("~/Scripts/MicrosoftMvcAjax.js") %>" type="text/javascript"></script>
+    <script src="<%: Url.Content("~/Scripts/jquery.unobtrusive-ajax.min.js")%>" type="text/javascript"></script>
+    <script type="text/javascript">
+        function loginAjaxBegin() {
+            $("#main").empty();
+            $("#main").html('<div align="center"><img src="<%: Url.Content("~/Images/ajax-loader.gif")%>" alt="Loading..."/></div>');
+        }
+
+        function loginAjaxSuccess() {
+            history.pushState({}, "", "/Account/LogOn");
+            OnLoad();
+        }
+
+        function aboutAjaxBegin() {
+            ajaxBegin();
+        }
+
+        function aboutAjaxSuccess() {
+            document.title = "About";
+            history.pushState({}, "", "/Home/About");
+        }
+
+        function ajaxBegin() {
+            $("#main").html('<div align="center"><img src="<%: Url.Content("~/Images/ajax-loader.gif")%>" alt="Loading..."/></div>');
+        }
+
+        $(document).on("click", "#Lnk_NeedHelp", function () {
+            $("#main").html('<div align="center"><img src="<%: Url.Content("~/Images/ajax-loader.gif")%>" alt="Loading..."/></div>');
+            $.ajax({
+                type: "GET",
+                url: "/Account/Recovery",
+                success: function (data) {
+                    $("#main").html(data);
+                    history.pushState({}, "", "/Account/Recovery");
+                }
+            });
+        });
+
+        $(document).on("submit", "#Form_Login", function (e) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+
+            $("#main").html('<div align="center"><img src="<%: Url.Content("~/Images/ajax-processing.gif")%>" alt="Processing Please Wait..."/></div>');
+            var data = {
+                UserName: $.trim($("#UserName").val()),
+                Password: $.trim($("#Password").val())
+            };
+            
+            $.ajax({
+                type: "POST",
+                data: $(this).serialize(),
+                dataType: "json",
+                url: "/Account/LogOn",
+                success: function (data) {
+                    if (data.result) {
+                        $("#main").html('<div align="center" style="color: #008000; font-weight: bold;font-size:16px">Login Successfull.<br/>Please wait while you are redirect...</div>');
+                        setTimeout(LoginRedirect(data.redirecturl), 500);
+                    }
+                    else {
+                        //                        var errorJson = data.errors;
+                        //                        alert(errorJson);
+                        //                        if (errorJson.length) {
+                        //                            $autocomplete.empty();
+                        //                            $.each(errorJson, function (key, val) {
+                        //                                $('<li></li>').text(val).appendTo($("#LogOnInfo"));
+                        //                            });
+                        //                        }
+                        $("#main").html(data.errorPartial);
+                    }
+                },
+                error: function (xhr) {
+                    // alert(xhr.responseText);
+                    $("#main").html('');
+                    alert("Critical Error!. Failed to call the server.");
+                }
+            });
+        });
+
+//        $(document).ready(function () {
+
+//            // Set up the click event on the button to make
+//            // the ajax call to add the student.
+//            $("#LoginSubmit").click(function () {
+
+//                // collect the data to a Json object.
+//                var data = {
+//                    UserName: $.trim($("#UserName").val()),
+//                    Password: $.trim($("#Password").val())
+//                };
+
+//                $.ajax({
+//                    cache: false,
+//                    type: "POST",
+//                    url: "/Account/LogOn",
+//                    data: data,
+//                    dataType: "json",
+//                    success: function (data) {
+//                        // There is no problem with the validation
+//                        if (data.result) {
+//                            $("#main").html('<div align="center" style="color: #008000; font-weight: bold;font-size:16px">Login Successfull.<br/>Please wait while you are redirect...</div>');
+//                            setTimeout(LoginRedirect(data.redirecturl), 500);
+//                        }
+//                        else
+//                            $("#main").html(data.errorPartial);
+
+//                    },
+//                    error: function (xhr) {
+//                        // alert(xhr.responseText);
+//                        $("#main").html('');
+//                        alert("Critical Error!. Failed to call the server.");
+//                    }
+//                });
+//            });
+//        });
+                
+        
+        function LoginRedirect(redirecturl) {
+            window.location = "/" + redirecturl;
+        }
+
+    </script>
+</head>
+<body>
+    <div class="page">
+        <div id="header">
+            <div id="title">
+                <h1>
+                    GateAccess</h1>
+            </div>
+            <div id="logindisplay">
+                <% Html.RenderPartial("LogOnUserControl"); %>
+            </div>
+            <div id="menucontainer">
+                <% Html.RenderPartial("SiteMenu"); %>
+            </div>
+        </div>
+        <div id="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+        <div id="footer">
+            <hr />
+            &copy;&nbsp; Copyright &nbsp;<%:DateTime.Now.Year.ToString()%>
+        </div>
+    </div>
+</body>
+</html>

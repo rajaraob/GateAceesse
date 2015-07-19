@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MenuOptions>
+  <MenuOption>
+    <MenuOptionID>1</MenuOptionID>
+    <MenuOptionName>Users</MenuOptionName>
+  </MenuOption>
+  <MenuOption>
+    <MenuOptionID>2</MenuOptionID>
+    <MenuOptionName>Visitors</MenuOptionName>
+  </MenuOption>
+  <MenuOption>
+    <MenuOptionID>3</MenuOptionID>
+    <MenuOptionName>Maintenances</MenuOptionName>
+  </MenuOption>
+  <MenuOption>
+    <MenuOptionID>4</MenuOptionID>
+    <MenuOptionName>LostFounds</MenuOptionName>
+  </MenuOption>
+  <MenuOption>
+    <MenuOptionID>5</MenuOptionID>
+    <MenuOptionName>Notices</MenuOptionName>
+  </MenuOption>
+</MenuOptions>
